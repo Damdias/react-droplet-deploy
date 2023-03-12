@@ -55,6 +55,9 @@ jobs:
       #   run: cat irs.pem
       # - name: "Deploy to droplet"
       #   run: scp -i irs.pem next-app root@64.227.158.183:/var/www/
+      - name: List directory
+        run: |
+          ls -a
       - name: Run a multi-line script
         run: |
           tar -cvf deploy.tar next-app
