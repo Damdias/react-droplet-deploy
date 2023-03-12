@@ -81,4 +81,4 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
           script: |
-            tar –xvzf /var/www/deploy.tar –C /var/www/html/
+            tar -xvf /var/www/deploy.tar -C /var/www/html/
