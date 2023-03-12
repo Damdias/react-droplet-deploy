@@ -72,4 +72,13 @@ jobs:
           key: ${{ secrets.SSHKEY }}
           port: ${{ secrets.PORT }}
           source: "deploy.tar"
-          target: "var/www/"
+          target: "/var/www/"
+      - name: executing remote ssh commands using password
+            uses: appleboy/ssh-action@v0.1.8
+            with:
+              host: ${{ secrets.HOST }}
+              username: ${{ secrets.USERNAME }}
+              key: ${{ secrets.SSHKEY }}
+              port: ${{ secrets.PORT }}
+              script: |
+                  tar –xvzf /var/www/deploy.tar –C /var/www/html/
