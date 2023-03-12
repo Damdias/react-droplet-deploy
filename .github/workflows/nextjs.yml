@@ -51,4 +51,4 @@ jobs:
           name: next-app
 
       - name: "Deploy to droplet"
-        run: scp -i ${{ secrets.SSHKey }} next-app root@64.227.158.183:/var/www/
+        run: scp -i ${{ env.SSHKey }} next-app root@64.227.158.183:/var/www/
