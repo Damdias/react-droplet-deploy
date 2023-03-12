@@ -33,11 +33,11 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
-      # - name: Upload artifact for deployment job
-      #   uses: actions/upload-artifact@v3
-      #   with:
-      #     name: next-app
-      #     path: ./apps/web/.next/server/pages
+      - name: Upload artifact for deployment job
+        uses: actions/upload-artifact@v3
+        with:
+          name: next-app
+          path: ./apps/web/.next/server/pages
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -45,10 +45,10 @@ jobs:
     #   name: "production"
 
     steps:
-      # - name: Download artifact from build job
-      #   uses: actions/download-artifact@v3
-      #   with:
-      #     name: next-app
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v3
+        with:
+          name: next-app
       # - name: Create pem file
       #   run: echo '${{secrets.SSHKey}}' >> irs.pem
       # - name: print key
@@ -57,7 +57,7 @@ jobs:
       #   run: scp -i irs.pem next-app root@64.227.158.183:/var/www/
       - name: Run a multi-line script
         run: |
-          tar -cvf deploy.tar ./apps/web/.next/server/pages
+          tar -cvf deploy.tar next-app
 
       - name: copy file via ssh password
         uses: appleboy/scp-action@master
