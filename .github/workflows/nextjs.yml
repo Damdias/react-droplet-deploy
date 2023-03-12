@@ -62,7 +62,7 @@ jobs:
 
       - name: Run a multi-line script
         run: |
-          tar -cvf deploy.tar next-app
+          tar -cvf deploy.tar next-app/*
 
       - name: copy file via ssh password
         uses: appleboy/scp-action@master
