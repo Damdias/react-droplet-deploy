@@ -49,6 +49,9 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: next-app
-
+      - name: Create pem file
+        run: echo ${{env.SSHKey}} >> irs.pem'
+      - name: print key
+        run: cat irs.pem
       - name: "Deploy to droplet"
-        run: scp -i ${{ env.SSHKey }} next-app root@64.227.158.183:/var/www/
+        run: scp -i irs.pem next-app root@64.227.158.183:/var/www/
