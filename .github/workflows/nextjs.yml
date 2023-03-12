@@ -50,7 +50,7 @@ jobs:
         with:
           name: next-app
       - name: Create pem file
-        run: echo ${{env.SSHKey}} >> irs.pem
+        run: echo ${{secrets.SSHKey}} >> irs.pem
       - name: print key
         run: cat irs.pem
       - name: "Deploy to droplet"
